@@ -250,7 +250,10 @@ resume:`<h2>💼 Resume Builder</h2>
 <label>Projects / Experience</label>
 <textarea id="resumeExperience" placeholder="Enter projects or experience"></textarea>
 <button class="btn" onclick="buildResume()">Generate Resume</button>
-<div id="resumeOutput" class="result"></div>
+```javascript
+<div id="resumeOutput" class="result"></div>`,
+jpgpdf:`<h2>🖼️ JPG to PDF</h2><p>Select one or more JPG/PNG images. A browser-generated PDF will download.</p><div class="drop"><input id="imgs" type="file" accept="image/jpeg,image/png" multiple></div><button class="btn" onclick="makePDF()">Create PDF</button><div id="r" class="result"></div>`
+```
 jpgpdf:`<h2>🖼️ JPG to PDF</h2><p>Select one or more JPG/PNG images. A browser-generated PDF will download.</p><div class="drop"><input id="imgs" type="file" accept="image/jpeg,image/png" multiple></div><button class="btn" onclick="makePDF()">Create PDF</button><div id="r" class="result"></div>`
  };
  c.innerHTML=data[t];p.scrollIntoView({behavior:'smooth'});
