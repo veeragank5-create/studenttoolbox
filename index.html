@@ -109,8 +109,33 @@ a.cat:hover {
       <p>Convert images to a PDF in your browser.</p>
       <button onclick="openTool('jpgpdf')">Use Tool →</button>
     </div>
-  </div>
-</section>
+```html
+    <!-- Resume Builder -->
+    <div class="card" data-category="career" data-name="resume builder cv">
+      <div class="icon">💼</div>
+      <h3>Resume Builder</h3>
+      <p>Create a professional student resume.</p>
+      <button onclick="openTool('resume')">Use Tool →</button>
+    </div>
+
+    <!-- Study Timetable Maker -->
+    <div class="card" data-category="study" data-name="study timetable schedule planner">
+      <div class="icon">📅</div>
+      <h3>Study Timetable Maker</h3>
+      <p>Plan your weekly study schedule.</p>
+      <button onclick="openTool('timetable')">Use Tool →</button>
+    </div>
+
+    <!-- Typing Speed Test -->
+    <div class="card" data-category="text" data-name="typing speed test wpm">
+      <div class="icon">⌨️</div>
+      <h3>Typing Speed Test</h3>
+      <p>Test your typing speed and accuracy.</p>
+      <button onclick="openTool('typing')">Use Tool →</button>
+    </div>
+```
+    </div>
+  </section>
 
 
 
@@ -212,7 +237,24 @@ function openTool(t){
  pomodoro:`<h2>⏱️ Pomodoro Study Timer</h2><div id="clock" style="font-size:55px;text-align:center;font-weight:800">25:00</div><div style="text-align:center"><button class="btn" onclick="startPom()">Start</button> <button class="btn" onclick="resetPom()">Reset</button></div>`,
  exam:`<h2>📅 Exam Countdown</h2><input id="examDate" type="datetime-local"><button class="btn" onclick="countExam()">Calculate</button><div id="r" class="result"></div>`,
  age:`<h2>🎂 Age Calculator</h2><input id="dob" type="date"><button class="btn" onclick="calcAge()">Calculate Age</button><div id="r" class="result"></div>`,
- jpgpdf:`<h2>🖼️ JPG to PDF</h2><p>Select one or more JPG/PNG images. A browser-generated PDF will download.</p><div class="drop"><input id="imgs" type="file" accept="image/jpeg,image/png" multiple></div><button class="btn" onclick="makePDF()">Create PDF</button><div id="r" class="result"></div>`
+```javascript
+resume:`<h2>💼 Resume Builder</h2>
+<label>Full Name</label>
+<input id="resumeName" placeholder="Enter your full name">
+<label>Email</label>
+<input id="resumeEmail" type="email" placeholder="Enter your email">
+<label>Phone Number</label>
+<input id="resumePhone" placeholder="Enter phone number">
+<label>Education</label>
+<textarea id="resumeEducation" placeholder="Course, College, Year"></textarea>
+<label>Skills</label>
+<textarea id="resumeSkills" placeholder="Enter your skills"></textarea>
+<label>Projects / Experience</label>
+<textarea id="resumeExperience" placeholder="Enter projects or experience"></textarea>
+<button class="btn" onclick="buildResume()">Generate Resume</button>
+<div id="resumeOutput" class="result"></div>`,
+```
+   jpgpdf:`<h2>🖼️ JPG to PDF</h2><p>Select one or more JPG/PNG images. A browser-generated PDF will download.</p><div class="drop"><input id="imgs" type="file" accept="image/jpeg,image/png" multiple></div><button class="btn" onclick="makePDF()">Create PDF</button><div id="r" class="result"></div>`
  };
  c.innerHTML=data[t];p.scrollIntoView({behavior:'smooth'});
 }
