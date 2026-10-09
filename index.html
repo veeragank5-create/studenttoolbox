@@ -331,10 +331,10 @@ function buildResume() {
   html += '</table>';
   output.innerHTML = html;
 }
-```javascript
 let typingStart = null;
 let typingTimer = null;
 
+```javascript
 function checkTyping() {
   const input = document.getElementById('typingInput');
   const result = document.getElementById('typingResult');
@@ -350,29 +350,34 @@ function checkTyping() {
     typingStart = Date.now();
   }
 
-  const seconds = Math.max(1, Math.floor((Date.now() - typingStart) / 1000));
-  const words = input.value.trim() ? input.value.trim().split(/\s+/).length : 0;
+  const seconds = Math.max(
+    1,
+    Math.floor((Date.now() - typingStart) / 1000)
+  );
+
+  const words = input.value.trim().split(/\s+/).length;
   const wpm = Math.round(words * 60 / seconds);
 
   let correct = 0;
+
   for (let i = 0; i < input.value.length && i < target.length; i++) {
     if (input.value[i] === target[i]) correct++;
   }
 
-  const accuracy = input.value.length
-    ? Math.round(correct / input.value.length * 100)
-    : 100;
+  const accuracy = Math.round(
+    correct / input.value.length * 100
+  );
 
-result.textContent = 'Time: ' + seconds +
-  ' seconds | Speed: ' + wpm +
-  ' WPM | Accuracy: ' + accuracy + '%';
-
+  result.textContent = 'Time: ' + seconds +
+    ' seconds | Speed: ' + wpm +
+    ' WPM | Accuracy: ' + accuracy + '%';
 
   if (input.value === target) {
     input.disabled = true;
     result.textContent += ' | Completed!';
   }
 }
+```
 
 function resetTyping() {
   const input = document.getElementById('typingInput');
