@@ -363,8 +363,10 @@ function checkTyping() {
     ? Math.round(correct / input.value.length * 100)
     : 100;
 
-  result.textContent =
-    `Time: ${seconds} seconds | Speed: ${wpm} WPM | Accuracy: ${accuracy}%`;
+result.textContent = 'Time: ' + seconds +
+  ' seconds | Speed: ' + wpm +
+  ' WPM | Accuracy: ' + accuracy + '%';
+
 
   if (input.value === target) {
     input.disabled = true;
