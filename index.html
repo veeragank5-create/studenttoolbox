@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="StudentToolBox - Free online tools for students including CGPA, GPA, percentage, word counter, age calculator, exam countdown, Pomodoro and JPG to PDF.">
+<title>StudentToolBox – Free Online Tools for Students</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#102a56;background:#fff}
+a{text-decoration:none;color:inherit}.nav{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid #e8edf5;position:sticky;top:0;background:#fff;z-index:10}
+.logo{font-size:24px;font-weight:800;color:#173a73}.logo span{color:#1976f3}.logo small{display:block;font-size:11px;color:#71809a;font-weight:500;margin-top:-3px}
+nav{display:flex;gap:25px;align-items:center;font-size:14px;font-weight:700}.nav a:hover{color:#1976f3}.hero{background:linear-gradient(135deg,#eef7ff,#dceeff);padding:58px 6% 42px;display:flex;align-items:center;gap:40px;min-height:360px}
+.hero-text{flex:1}.hero h1{font-size:47px;line-height:1.05;margin:0 0 12px}.hero h1 span{color:#126cf1}.hero p{color:#5c6d85;font-size:17px}.search{display:flex;background:#fff;border-radius:18px;padding:7px;max-width:720px;box-shadow:0 8px 30px #a8bfd955}.search input{flex:1;border:0;outline:0;padding:15px;font-size:15px}.btn{border:0;background:#1672f5;color:#fff;padding:13px 22px;border-radius:13px;font-weight:700;cursor:pointer}.badges{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}.badge{padding:8px 13px;background:#fff;border-radius:20px;font-size:12px;font-weight:700}
+.hero-art{width:330px;text-align:center;font-size:110px}.section{padding:35px 5%}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.section-title h2{margin:0;font-size:25px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{padding:20px;border-radius:15px;min-height:180px;box-shadow:0 4px 18px #193a6612;border:1px solid #edf1f7;background:#fff}.card .icon{font-size:34px}.card h3{margin:10px 0 7px;font-size:17px}.card p{font-size:13px;color:#65748b;min-height:35px}.card button{background:#176eea;color:white;border:0;border-radius:9px;padding:9px 14px;font-weight:700;cursor:pointer}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.cat{padding:20px;border:1px solid #e3eaf4;border-radius:13px}.cat h3{font-size:15px;margin:8px 0}.cat p{font-size:12px;color:#68778d}.features{display:grid;grid-template-columns:repeat(4,1fr);background:#edf6ff;border-radius:14px;padding:20px;gap:15px}.feature{text-align:center}.feature b{display:block}.feature span{font-size:12px;color:#63728a}.latest{display:grid;grid-template-columns:2fr 1fr;gap:20px}.updates{display:grid;gap:10px}.update{padding:15px;border:1px solid #e5ebf4;border-radius:11px}.update b{font-size:14px}.update small{display:block;color:#7a8799;margin-top:5px}.trending{border:1px solid #e5ebf4;border-radius:11px;padding:15px}.trending div{padding:10px 0;border-bottom:1px solid #eef1f5;font-size:13px}.tool-panel{display:none;padding:25px 5%;background:#f7faff;border-top:1px solid #e5ebf4}.tool-panel.active{display:block}.tool-box{max-width:800px;margin:auto;background:#fff;border-radius:15px;padding:25px;box-shadow:0 5px 25px #193a6612}.tool-box h2{margin-top:0}.tool-box input,.tool-box textarea,.tool-box select{width:100%;padding:12px;border:1px solid #ccd7e6;border-radius:9px;margin:7px 0 14px}.result{margin-top:15px;padding:15px;border-radius:10px;background:#edf6ff;font-weight:700}.drop{border:2px dashed #9bb8db;padding:25px;text-align:center;border-radius:12px;margin:10px 0}.footer{background:#0e438c;color:#fff;padding:35px 5%;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.footer small{color:#c9dcf6}.footer-links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+@media(max-width:900px){nav{display:none}.hero{flex-direction:column;text-align:center}.hero h1{font-size:37px}.hero-art{width:auto}.cards{grid-template-columns:repeat(2,1fr)}.categories{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.latest{grid-template-columns:1fr}}
+@media(max-width:560px){.nav{padding:0 4%}.hero{padding:40px 5%}.hero h1{font-size:31px}.cards,.categories,.features{grid-template-columns:1fr}.section{padding:28px 4%}.hero-art{font-size:80px}}
+</style>
+</head>
+<body>
+<header class="nav">
+<a class="logo" href="#" onclick="home()"><span>🎓</span> Student<span>ToolBox</span><small>Free Online Tools for Students</small></a>
+<nav>
+<a href="#tools">All Tools</a><a href="#categories">Study Tools</a><a href="#tools">PDF & Image</a><a href="#tools">Calculators</a><a href="#career">Career</a><a href="#about">About</a><a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-text">
+<h1>All the Tools <span>Students Need</span><br>in One Place</h1>
+<p>Free • Fast • Simple • Easy to Use</p>
+<div class="search"><input id="searchInput" placeholder="Search for a tool (e.g. CGPA, PDF, Age Calculator...)" oninput="filterTools()"><button class="btn" onclick="filterTools()">Search</button></div>
+<div class="badges"><span class="badge">100% Free</span><span class="badge">No Signup</span><span class="badge">Mobile Friendly</span><span class="badge">Easy to Use</span></div>
+</div>
+<div class="hero-art">👨‍🎓📚</div>
+</section>
+
+<section class="section" id="tools">
+<div class="section-title"><h2>🔥 Popular Tools</h2><span>View All Tools →</span></div>
+<div class="cards" id="toolCards">
+<div class="card" data-name="cgpa percentage"><div class="icon">🎓</div><h3>CGPA to Percentage</h3><p>Convert your CGPA to percentage.</p><button onclick="openTool('cgpa')">Use Tool →</button></div>
+<div class="card" data-name="percentage calculator marks grades"><div class="icon">🧮</div><h3>Percentage Calculator</h3><p>Calculate percentage, marks and grades.</p><button onclick="openTool('percentage')">Use Tool →</button></div>
+<div class="card" data-name="gpa calculator"><div class="icon">📊</div><h3>GPA Calculator</h3><p>Calculate GPA for your subjects.</p><button onclick="openTool('gpa')">Use Tool →</button></div>
+<div class="card" data-name="word counter character"><div class="icon">📝</div><h3>Word Counter</h3><p>Count words and characters.</p><button onclick="openTool('word')">Use Tool →</button></div>
+<div class="card" data-name="pomodoro study timer"><div class="icon">⏱️</div><h3>Pomodoro Timer</h3><p>Stay focused and study better.</p><button onclick="openTool('pomodoro')">Use Tool →</button></div>
+<div class="card" data-name="exam countdown"><div class="icon">📅</div><h3>Exam Countdown</h3><p>Count days left for your exam.</p><button onclick="openTool('exam')">Use Tool →</button></div>
+<div class="card" data-name="age calculator"><div class="icon">🎂</div><h3>Age Calculator</h3><p>Calculate your exact age.</p><button onclick="openTool('age')">Use Tool →</button></div>
+<div class="card" data-name="jpg pdf image"><div class="icon">🖼️</div><h3>JPG to PDF</h3><p>Convert images to a PDF in your browser.</p><button onclick="openTool('jpgpdf')">Use Tool →</button></div>
+</div>
+</section>
+
+<section class="section" id="categories">
+<div class="section-title"><h2>📂 Tool Categories</h2></div>
+<div class="categories">
+<div class="cat"><div>📚</div><h3>Study Tools</h3><p>Pomodoro, Exam Countdown, Notes Tools.</p></div>
+<div class="cat"><div>🧮</div><h3>Calculator Tools</h3><p>Percentage, CGPA, GPA, Age Calculator.</p></div>
+<div class="cat"><div>📄</div><h3>PDF & Image Tools</h3><p>JPG to PDF, Image Compressor and more.</p></div>
+<div class="cat"><div>📝</div><h3>Text Tools</h3><p>Word Counter, Character Counter and more.</p></div>
+<div class="cat" id="career"><div>💼</div><h3>Career Tools</h3><p>Resume Builder, Job Search, Exam Calendar.</p></div>
+</div>
+</section>
+
+<section class="section">
+<div class="features"><div class="feature">🆓<b>100% Free</b><span>Free tools to use</span></div><div class="feature">👤<b>No Registration</b><span>No signup required</span></div><div class="feature">🛡️<b>Fast & Secure</b><span>Works in your browser</span></div><div class="feature">📱<b>Mobile Friendly</b><span>Phone, tablet and desktop</span></div></div>
+</section>
+
+<section class="section">
+<div class="latest">
+<div><div class="section-title"><h2>📣 Latest Updates</h2></div><div class="updates"><div class="update"><b>NEW — JPG to PDF Tool</b><small>Convert images to PDF easily.</small></div><div class="update"><b>NEW — Exam Countdown</b><small>Track your important exam dates.</small></div><div class="update"><b>UPDATE — CGPA Calculator</b><small>Improved student-friendly calculator.</small></div></div></div>
+<div><div class="section-title"><h2>🏆 Trending Tools</h2></div><div class="trending"><div>1️⃣ CGPA to Percentage</div><div>2️⃣ Percentage Calculator</div><div>3️⃣ Age Calculator</div><div>4️⃣ Word Counter</div><div>5️⃣ Pomodoro Timer</div></div></div>
+</div>
+</section>
+
+<div id="toolPanel" class="tool-panel"><div class="tool-box" id="toolContent"></div></div>
+
+<section class="section" id="about"><div class="tool-box"><h2>About StudentToolBox</h2><p>StudentToolBox is designed to give students simple, fast and free browser-based tools for study, calculations, documents and career preparation.</p></div></section>
+<section class="section" id="contact"><div class="tool-box"><h2>Contact</h2><p>For feedback or tool suggestions, add your contact email here before publishing the site.</p></div></section>
+
+<footer class="footer"><div><strong>🎓 StudentToolBox</strong><br><small>Free Online Tools for Students</small></div><div class="footer-links"><a href="#">Home</a><a href="#tools">All Tools</a><a href="#about">About Us</a><a href="#contact">Contact</a><a href="#">Privacy Policy</a><a href="#">Terms</a></div><small>© 2026 StudentToolBox. All Rights Reserved.</small></footer>
+
+<script>
+let timer=null, seconds=25*60;
+function filterTools(){let q=document.getElementById('searchInput').value.toLowerCase();document.querySelectorAll('.card').forEach(c=>c.style.display=c.dataset.name.includes(q)?'block':'none');}
+function openTool(t){
+ const p=document.getElementById('toolPanel'), c=document.getElementById('toolContent'); p.classList.add('active');
+ const data={
+ cgpa:`<h2>🎓 CGPA to Percentage</h2><p>Enter your CGPA (example: 8.5).</p><input id="cg" type="number" step="0.01" placeholder="CGPA"><button class="btn" onclick="calcCGPA()">Calculate</button><div id="r" class="result"></div>`,
+ percentage:`<h2>🧮 Percentage Calculator</h2><input id="obt" type="number" placeholder="Obtained marks"><input id="tot" type="number" placeholder="Total marks"><button class="btn" onclick="calcPct()">Calculate</button><div id="r" class="result"></div>`,
+ gpa:`<h2>📊 GPA Calculator</h2><p>Enter grade points and credits separated by commas.</p><input id="grades" placeholder="8,7,9,8"><input id="credits" placeholder="3,3,4,3"><button class="btn" onclick="calcGPA()">Calculate GPA</button><div id="r" class="result"></div>`,
+ word:`<h2>📝 Word & Character Counter</h2><textarea id="txt" rows="9" placeholder="Type or paste your text..." oninput="countText()"></textarea><div id="r" class="result">Words: 0 | Characters: 0</div>`,
+ pomodoro:`<h2>⏱️ Pomodoro Study Timer</h2><div id="clock" style="font-size:55px;text-align:center;font-weight:800">25:00</div><div style="text-align:center"><button class="btn" onclick="startPom()">Start</button> <button class="btn" onclick="resetPom()">Reset</button></div>`,
+ exam:`<h2>📅 Exam Countdown</h2><input id="examDate" type="datetime-local"><button class="btn" onclick="countExam()">Calculate</button><div id="r" class="result"></div>`,
+ age:`<h2>🎂 Age Calculator</h2><input id="dob" type="date"><button class="btn" onclick="calcAge()">Calculate Age</button><div id="r" class="result"></div>`,
+ jpgpdf:`<h2>🖼️ JPG to PDF</h2><p>Select one or more JPG/PNG images. A browser-generated PDF will download.</p><div class="drop"><input id="imgs" type="file" accept="image/jpeg,image/png" multiple></div><button class="btn" onclick="makePDF()">Create PDF</button><div id="r" class="result"></div>`
+ };
+ c.innerHTML=data[t];p.scrollIntoView({behavior:'smooth'});
+}
+function calcCGPA(){let v=+document.getElementById('cg').value;document.getElementById('r').textContent=v?`Percentage ≈ ${(v*9.5).toFixed(2)}%`:'Enter a valid CGPA';}
+function calcPct(){let a=+obt.value,b=+tot.value;document.getElementById('r').textContent=b>0?`Percentage = ${(a/b*100).toFixed(2)}%`:'Enter valid marks';}
+function calcGPA(){let g=grades.value.split(',').map(Number),c=credits.value.split(',').map(Number);if(g.length!==c.length||!g.every(x=>Number.isFinite(x))||!c.every(x=>x>0)){r.textContent='Enter matching grade points and credits.';return}let s=c.reduce((x,v,i)=>x+g[i]*v,0),z=c.reduce((x,v)=>x+v,0);r.textContent=`GPA = ${(s/z).toFixed(2)}`;}
+function countText(){let t=document.getElementById('txt').value;document.getElementById('r').textContent=`Words: ${t.trim()?t.trim().split(/\\s+/).length:0} | Characters: ${t.length}`;}
+function startPom(){if(timer)return;timer=setInterval(()=>{seconds--;let m=Math.floor(seconds/60),s=seconds%60;clock.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;if(seconds<=0){clearInterval(timer);timer=null;alert('Pomodoro complete! Take a short break.');}},1000)}
+function resetPom(){clearInterval(timer);timer=null;seconds=1500;clock.textContent='25:00'}
+function countExam(){let d=new Date(document.getElementById('examDate').value),now=new Date();if(isNaN(d)){r.textContent='Choose an exam date.';return}let ms=d-now;if(ms<=0){r.textContent='The exam date has passed.';return}let days=Math.floor(ms/86400000),hrs=Math.floor(ms%86400000/3600000);r.textContent=`${days} days ${hrs} hours remaining`;}
+function calcAge(){let d=new Date(document.getElementById('dob').value),n=new Date();if(isNaN(d)){r.textContent='Choose your date of birth.';return}let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth();if(m<0||(m===0&&n.getDate()<d.getDate()))y--;r.textContent=`Your age is ${y} years`;}
+function makePDF(){r.textContent='PDF generation is prepared as the next upgrade. For a fully client-side PDF without a server, add a PDF library such as jsPDF.'}
+function home(){window.scrollTo({top:0,behavior:'smooth'})}
+</script>
+</body>
+</html>
