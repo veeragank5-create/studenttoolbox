@@ -76,8 +76,11 @@ nav{display:flex;gap:25px;align-items:center;font-size:14px;font-weight:700}.nav
 <section class="section" id="about"><div class="tool-box"><h2>About StudentToolBox</h2><p>StudentToolBox is designed to give students simple, fast and free browser-based tools for study, calculations, documents and career preparation.</p></div></section>
 <section class="section" id="contact"><div class="tool-box"><h2>Contact</h2><p>For feedback or tool suggestions, studenttools@gmail.com before publishing the site.</p></div></section>
 
-<footer class="footer"><div><strong>🎓 StudentToolBox</strong><br><small>Free Online Tools for Students</small></div><div class="footer-links"><a href="#">Home</a><a href="#tools">All Tools</a><a href="#about">About Us</a><a href="#contact">Contact</a><a href="privacy-policy.html">Privacy Policy</a><a href="#">Terms</a></div><small>© 2026 StudentToolBox. All Rights Reserved.</small></footer>
-
+<footer class="footer"><div><strong>🎓 StudentToolBox</strong><br><small>Free Online Tools for Students</small></div><div class="footer-links"><a href="#">Home</a><a href="#tools">All Tools</a><a href="#about">About Us</a><a href="#contact">Contact</a><a href="privacy-policy.html">Privacy Policy</a>
+<a href="terms.html">Terms</a>
+</div>
+<small>© 2026 StudentToolBox. All Rights Reserved.</small>
+</footer>
 <script>
 let timer=null, seconds=25*60;
 function filterTools(){let q=document.getElementById('searchInput').value.toLowerCase();document.querySelectorAll('.card').forEach(c=>c.style.display=c.dataset.name.includes(q)?'block':'none');}
