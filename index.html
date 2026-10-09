@@ -46,19 +46,73 @@ a.cat:hover {
 <div class="hero-art">👨‍🎓📚</div>
 </section>
 
+
 <section class="section" id="tools">
-<div class="section-title"><h2>🔥 Popular Tools</h2><span>View All Tools →</span></div>
-<div class="cards" id="toolCards">
-<div class="card" data-name="cgpa percentage"><div class="icon">🎓</div><h3>CGPA to Percentage</h3><p>Convert your CGPA to percentage.</p><button onclick="openTool('cgpa')">Use Tool →</button></div>
-<div class="card" data-name="percentage calculator marks grades"><div class="icon">🧮</div><h3>Percentage Calculator</h3><p>Calculate percentage, marks and grades.</p><button onclick="openTool('percentage')">Use Tool →</button></div>
-<div class="card" data-name="gpa calculator"><div class="icon">📊</div><h3>GPA Calculator</h3><p>Calculate GPA for your subjects.</p><button onclick="openTool('gpa')">Use Tool →</button></div>
-<div class="card" data-name="word counter character"><div class="icon">📝</div><h3>Word Counter</h3><p>Count words and characters.</p><button onclick="openTool('word')">Use Tool →</button></div>
-<div class="card" data-name="pomodoro study timer"><div class="icon">⏱️</div><h3>Pomodoro Timer</h3><p>Stay focused and study better.</p><button onclick="openTool('pomodoro')">Use Tool →</button></div>
-<div class="card" data-name="exam countdown"><div class="icon">📅</div><h3>Exam Countdown</h3><p>Count days left for your exam.</p><button onclick="openTool('exam')">Use Tool →</button></div>
-<div class="card" data-name="age calculator"><div class="icon">🎂</div><h3>Age Calculator</h3><p>Calculate your exact age.</p><button onclick="openTool('age')">Use Tool →</button></div>
-<div class="card" data-name="jpg pdf image"><div class="icon">🖼️</div><h3>JPG to PDF</h3><p>Convert images to a PDF in your browser.</p><button onclick="openTool('jpgpdf')">Use Tool →</button></div>
-</div>
+  <div class="section-title">
+    <h2>🔥 Popular Tools</h2>
+    <button type="button" onclick="filterCategory('all')">View All Tools →</button>
+  </div>
+
+  <div class="cards" id="toolCards">
+    <div class="card" data-category="calculator" data-name="cgpa percentage">
+      <div class="icon">🎓</div>
+      <h3>CGPA to Percentage</h3>
+      <p>Convert your CGPA to percentage.</p>
+      <button onclick="openTool('cgpa')">Use Tool →</button>
+    </div>
+
+    <div class="card" data-category="calculator" data-name="percentage calculator marks grades">
+      <div class="icon">🧮</div>
+      <h3>Percentage Calculator</h3>
+      <p>Calculate percentage, marks and grades.</p>
+      <button onclick="openTool('percentage')">Use Tool →</button>
+    </div>
+
+    <div class="card" data-category="calculator" data-name="gpa calculator">
+      <div class="icon">📊</div>
+      <h3>GPA Calculator</h3>
+      <p>Calculate GPA for your subjects.</p>
+      <button onclick="openTool('gpa')">Use Tool →</button>
+    </div>
+
+    <div class="card" data-category="text" data-name="word counter character">
+      <div class="icon">📝</div>
+      <h3>Word Counter</h3>
+      <p>Count words and characters.</p>
+      <button onclick="openTool('word')">Use Tool →</button>
+    </div>
+
+    <div class="card" data-category="study" data-name="pomodoro study timer">
+      <div class="icon">⏱️</div>
+      <h3>Pomodoro Timer</h3>
+      <p>Stay focused and study better.</p>
+      <button onclick="openTool('pomodoro')">Use Tool →</button>
+    </div>
+
+    <div class="card" data-category="study career" data-name="exam countdown">
+      <div class="icon">📅</div>
+      <h3>Exam Countdown</h3>
+      <p>Count days left for your exam.</p>
+      <button onclick="openTool('exam')">Use Tool →</button>
+    </div>
+
+    <div class="card" data-category="calculator" data-name="age calculator">
+      <div class="icon">🎂</div>
+      <h3>Age Calculator</h3>
+      <p>Calculate your exact age.</p>
+      <button onclick="openTool('age')">Use Tool →</button>
+    </div>
+
+    <div class="card" data-category="pdf" data-name="jpg pdf image">
+      <div class="icon">🖼️</div>
+      <h3>JPG to PDF</h3>
+      <p>Convert images to a PDF in your browser.</p>
+      <button onclick="openTool('jpgpdf')">Use Tool →</button>
+    </div>
+  </div>
 </section>
+
+
 
 
 <section class="section" id="categories">
@@ -67,34 +121,34 @@ a.cat:hover {
   </div>
 
   <div class="categories">
-   <a href="#tools" class="cat" onclick="filterCategory('study')">
+    <a href="#tools" class="cat" onclick="filterCategory('study')">
       <div>📚</div>
       <h3>Study Tools</h3>
-      <p>Pomodoro, Exam Countdown, Notes Tools.</p>
+      <p>Pomodoro, Exam Countdown.</p>
     </a>
 
-    <a href="#tools" class="cat" onclick="filterCategory('calculator')
+    <a href="#tools" class="cat" onclick="filterCategory('calculator')">
       <div>🧮</div>
       <h3>Calculator Tools</h3>
       <p>Percentage, CGPA, GPA, Age Calculator.</p>
     </a>
 
-    <a href="#tools" class="cat" onclick="filterCategory('pdf')
+    <a href="#tools" class="cat" onclick="filterCategory('pdf')">
       <div>📄</div>
       <h3>PDF &amp; Image Tools</h3>
-      <p>JPG to PDF, Image Compressor and more.</p>
+      <p>JPG to PDF.</p>
     </a>
 
-    <a href="#tools" class="cat" onclick="filterCategory('text')
+    <a href="#tools" class="cat" onclick="filterCategory('text')">
       <div>📝</div>
       <h3>Text Tools</h3>
-      <p>Word Counter, Character Counter and more.</p>
+      <p>Word and Character Counter.</p>
     </a>
 
-    <a href="#career" class="cat" onclick="filterCategory('career')
+    <a href="#tools" class="cat" onclick="filterCategory('career')">
       <div>💼</div>
       <h3>Career Tools</h3>
-      <p>Resume Builder, Job Search, Exam Calendar.</p>
+      <p>Exam Countdown and career tools.</p>
     </a>
   </div>
 </section>
@@ -122,7 +176,32 @@ a.cat:hover {
 </footer>
 <script>
 let timer=null, seconds=25*60;
-function filterTools(){let q=document.getElementById('searchInput').value.toLowerCase();document.querySelectorAll('.card').forEach(c=>c.style.display=c.dataset.name.includes(q)?'block':'none');}
+let activeCategory = 'all';
+
+function filterTools() {
+  const search = document.getElementById('searchInput');
+  const query = search ? search.value.toLowerCase().trim() : '';
+
+  document.querySelectorAll('#toolCards .card').forEach(card => {
+    const name = (card.dataset.name || '').toLowerCase();
+    const categories = (card.dataset.category || '').split(/\s+/);
+    const matchesSearch = name.includes(query);
+    const matchesCategory =
+      activeCategory === 'all' || categories.includes(activeCategory);
+
+    card.style.display =
+      matchesSearch && matchesCategory ? '' : 'none';
+  });
+}
+
+function filterCategory(category) {
+  activeCategory = category;
+  filterTools();
+
+  document.getElementById('tools')?.scrollIntoView({
+    behavior: 'smooth'
+  });
+}
 function openTool(t){
  const p=document.getElementById('toolPanel'), c=document.getElementById('toolContent'); p.classList.add('active');
  const data={
