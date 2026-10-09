@@ -250,13 +250,138 @@ resume:`<h2>💼 Resume Builder</h2>
 <label>Projects / Experience</label>
 <textarea id="resumeExperience" placeholder="Enter projects or experience"></textarea>
 <button class="btn" onclick="buildResume()">Generate Resume</button>
-```javascript
 <div id="resumeOutput" class="result"></div>`,
-jpgpdf:`<h2>🖼️ JPG to PDF</h2><p>Select one or more JPG/PNG images. A browser-generated PDF will download.</p><div class="drop"><input id="imgs" type="file" accept="image/jpeg,image/png" multiple></div><button class="btn" onclick="makePDF()">Create PDF</button><div id="r" class="result"></div>`
-```
+timetable:`<h2>📅 Study Timetable Maker</h2>
+<p>Enter your subjects separated by commas.</p>
+<input id="studySubjects" placeholder="Tamil, English, Maths, Science">
+<button class="btn" onclick="makeTimetable()">Create Timetable</button>
+<div id="timetableOutput" class="result"></div>`,
+typing:`<h2>⌨️ Typing Speed Test</h2>
+<p>கீழே உள்ள வாக்கியத்தைப் பார்த்து type செய்யுங்கள்:</p>
+<p id="typingText">The quick brown fox jumps over the lazy dog.</p>
+<textarea id="typingInput" rows="4" placeholder="Start typing here..." oninput="checkTyping()"></textarea>
+<div id="typingResult" class="result">Time: 0 seconds | Speed: 0 WPM</div>
+<button class="btn" onclick="resetTyping()">Try Again</button>`,
 jpgpdf:`<h2>🖼️ JPG to PDF</h2><p>Select one or more JPG/PNG images. A browser-generated PDF will download.</p><div class="drop"><input id="imgs" type="file" accept="image/jpeg,image/png" multiple></div><button class="btn" onclick="makePDF()">Create PDF</button><div id="r" class="result"></div>`
  };
  c.innerHTML=data[t];p.scrollIntoView({behavior:'smooth'});
+}
+function buildResume() {
+  const name = document.getElementById('resumeName').value.trim();
+  const email = document.getElementById('resumeEmail').value.trim();
+  const phone = document.getElementById('resumePhone').value.trim();
+  const education = document.getElementById('resumeEducation').value.trim();
+  const skills = document.getElementById('resumeSkills').value.trim();
+  const experience = document.getElementById('resumeExperience').value.trim();
+
+  if (!name) {
+    alert('Please enter your name.');
+    return;
+  }
+
+  const safe = (s) => s.replace(/[&<>"']/g, ch => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[ch]);
+
+  document.getElementById('resumeOutput').innerHTML = `
+    <h2>${safe(name)}</h2>
+    <p>${safe(email)} | ${safe(phone)}</p>
+    <hr>
+    <h3>Education</h3><p>${safe(education).replace(/\n/g, '<br>')}</p>
+    <h3>Skills</h3><p>${safe(skills).replace(/\n/g, '<br>')}</p>
+    <h3>Projects / Experience</h3><p>${safe(experience).replace(/\n/g, '<br>')}</p>
+    <button class="btn" onclick="window.print()">Print / Save as PDF</button>
+  `;
+}
+  function makeTimetable() {
+  const input = document.getElementById('studySubjects').value.trim();
+  const output = document.getElementById('timetableOutput');
+
+  if (!input) {
+    alert('Please enter your subjects.');
+    return;
+  }
+
+  const subjects = input.split(',').map(s => s.trim()).filter(Boolean);
+
+  if (subjects.length === 0) {
+    alert('Please enter valid subjects.');
+    return;
+  }
+
+  let html = '<h3>📚 Your Study Timetable</h3>';
+  html += '<table style="width:100%;border-collapse:collapse">';
+  html += '<tr><th>Day</th><th>Subject</th></tr>';
+
+  const days = [
+    'Monday', 'Tuesday', 'Wednesday',
+    'Thursday', 'Friday', 'Saturday', 'Sunday'
+  ];
+
+  days.forEach((day, i) => {
+    html += `<tr>
+      <td style="padding:8px;border:1px solid #ddd">${day}</td>
+      <td style="padding:8px;border:1px solid #ddd">${subjects[i % subjects.length]}</td>
+    </tr>`;
+  });
+
+  html += '</table>';
+  output.innerHTML = html;
+}
+```javascript
+let typingStart = null;
+let typingTimer = null;
+
+function checkTyping() {
+  const input = document.getElementById('typingInput');
+  const result = document.getElementById('typingResult');
+  const target = document.getElementById('typingText').textContent;
+
+  if (!input.value.length) {
+    typingStart = null;
+    result.textContent = 'Time: 0 seconds | Speed: 0 WPM';
+    return;
+  }
+
+  if (!typingStart) {
+    typingStart = Date.now();
+  }
+
+  const seconds = Math.max(1, Math.floor((Date.now() - typingStart) / 1000));
+  const words = input.value.trim() ? input.value.trim().split(/\s+/).length : 0;
+  const wpm = Math.round(words * 60 / seconds);
+
+  let correct = 0;
+  for (let i = 0; i < input.value.length && i < target.length; i++) {
+    if (input.value[i] === target[i]) correct++;
+  }
+
+  const accuracy = input.value.length
+    ? Math.round(correct / input.value.length * 100)
+    : 100;
+
+  result.textContent =
+    `Time: ${seconds} seconds | Speed: ${wpm} WPM | Accuracy: ${accuracy}%`;
+
+  if (input.value === target) {
+    input.disabled = true;
+    result.textContent += ' | Completed!';
+  }
+}
+
+function resetTyping() {
+  const input = document.getElementById('typingInput');
+  if (typingTimer) clearInterval(typingTimer);
+  typingTimer = null;
+  typingStart = null;
+  input.value = '';
+  input.disabled = false;
+  document.getElementById('typingResult').textContent =
+    'Time: 0 seconds | Speed: 0 WPM';
 }
 function calcCGPA(){let v=+document.getElementById('cg').value;document.getElementById('r').textContent=v?`Percentage ≈ ${(v*9.5).toFixed(2)}%`:'Enter a valid CGPA';}
 function calcPct(){let a=+obt.value,b=+tot.value;document.getElementById('r').textContent=b>0?`Percentage = ${(a/b*100).toFixed(2)}%`:'Enter valid marks';}
